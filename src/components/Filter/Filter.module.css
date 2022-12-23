@@ -1,0 +1,7 @@
+.filter > select {
+	color: #0b66ef;
+	border: none;
+	font-size: 20px;
+	cursor: pointer;
+	outline: none;
+}
