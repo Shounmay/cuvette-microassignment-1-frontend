@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { createSearchParams, useNavigate, useParams } from 'react-router-dom';
+
 import styles from './Filter.module.css';
 
 const Filter = () => {
+	const navigate = useNavigate();
+	const { categoryName } = useParams();
+	const [filter, setFilter] = useState({});
+
+	function onFilterChange(event) {
+		if (event.target.value == 'asc' || event.target.value == 'desc') {
+			navigate({
+				search: createSearchParams({
+					sortByDate: event.target.value,
+				}).toString(),
+			});
+		} else {
+			navigate({
+				search: createSearchParams({
+					filterByLike: event.target.value,
+				}).toString(),
+			});
+		}
+	}
 	return (
 		<div className={styles.filter}>
 			<select>
